@@ -1,11 +1,12 @@
-const { Router } = require("express");
-
+const { Router } = require('express');
+const DevController = require('./controller/DevController')
+const SearchController = require('./controller/SearchController')
 const routers = Router();
 
 
-routers.post('/devs', (req, res) => {
-    const { github_username } = req.body;
-    return res.json({ message: "Suceso" });
-});
+routers.post('/devs', DevController.store);
+routers.get('/devs', DevController.index);
+
+routers.get('/search', SearchController.index);
 
 module.exports = routers;
